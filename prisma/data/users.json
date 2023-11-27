@@ -1,0 +1,27 @@
+[
+  {
+    "username": "ChefGordon",
+    "password": "password1",
+    "Recipe": []
+  },
+  {
+    "username": "BakerSue",
+    "password": "password2",
+    "Recipe": []
+  },
+  {
+    "username": "GrillMaster",
+    "password": "password3",
+    "Recipe": []
+  },
+  {
+    "username": "VeganVicky",
+    "password": "password4",
+    "Recipe": []
+  },
+  {
+    "username": "PastryPaul",
+    "password": "password5",
+    "Recipe": []
+  }
+]
