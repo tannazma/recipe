@@ -29,4 +29,30 @@ const seed = async () => {
       });
     }
   }
+
+  for (let i = 0; i < recipes.length; i += 1) {
+    const recipesData = recipes[i];
+    if (recipesData) {
+      const userFound = await prisma.user.findFirst({
+        where: { username: recipesData.user.username },
+      });
+
+      if (!userFound) {
+        return;
+      }
+
+      await prisma.recipe.create({
+        data: {
+          name: recipesData.name,
+          img_url: recipesData.img_url,
+          instructions: recipesData.instructions,
+          ingredients: recipesData.ingredients,
+          prep_time: recipesData.prep_time,
+          serves: recipesData.serves,
+        //   user: { connect: { id: userFound.id } },
+          userId: userFound.id
+        },
+      });
+    }
+  }
 seed();
