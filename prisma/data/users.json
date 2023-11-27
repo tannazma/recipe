@@ -1,27 +1,32 @@
 [
   {
+    "id": 1,
     "username": "ChefGordon",
     "password": "password1",
-    "Recipe": []
+    "recipeId": 1
   },
   {
+    "id": 2,
     "username": "BakerSue",
     "password": "password2",
-    "Recipe": []
+    "recipeId": 2
   },
   {
+    "id": 3,
     "username": "GrillMaster",
     "password": "password3",
-    "Recipe": []
+    "recipeId": 3
   },
   {
+    "id": 4,
     "username": "VeganVicky",
     "password": "password4",
-    "Recipe": []
+    "recipeId": 4
   },
   {
+    "id": 5,
     "username": "PastryPaul",
     "password": "password5",
-    "Recipe": []
+    "recipeId": 5
   }
 ]

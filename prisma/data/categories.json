@@ -1,5 +1,6 @@
 [
   {
+    "id":1,
     "name": "breakfast",
     "img_url": "🍳",
     "recipes": {
@@ -14,6 +15,7 @@
     }
   },
   {
+    "id":2,
     "name": "lunch",
     "img_url": "🥯",
     "recipes": {
@@ -28,6 +30,7 @@
     }
   },
   {
+    "id":3,
     "name": "dinner",
     "img_url": "🥘",
     "recipes": {
@@ -42,6 +45,7 @@
     }
   },
   {
+    "id":4,
     "name": "dessert",
     "img_url": "🧁",
     "recipes": {
