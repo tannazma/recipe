@@ -1,0 +1,58 @@
+[
+  {
+    "name": "breakfast",
+    "img_url": "🍳",
+    "recipes": {
+      "connect": [
+        {
+          "id": 1
+        },
+        {
+          "id": 2
+        }
+      ]
+    }
+  },
+  {
+    "name": "lunch",
+    "img_url": "🥯",
+    "recipes": {
+      "connect": [
+        {
+          "id": 3
+        },
+        {
+          "id": 5
+        }
+      ]
+    }
+  },
+  {
+    "name": "dinner",
+    "img_url": "🥘",
+    "recipes": {
+      "connect": [
+        {
+          "id": 1
+        },
+        {
+          "id": 4
+        }
+      ]
+    }
+  },
+  {
+    "name": "dessert",
+    "img_url": "🧁",
+    "recipes": {
+      "connect": [
+        {
+          "id": 3
+        },
+        {
+          "id": 5
+        }
+      ]
+    }
+  }
+]
