@@ -1,10 +1,28 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { Recipe } from "../../types";
 
-const Home = () => {
+const RecipesList = () => {
+  const [getRecipes, setRecipes] = useState<Recipe[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("http://localhost:3001/recipes");
+      const data = await response.json();
+      console.log(data);
+      setRecipes(data);
+    };
+    fetchData();
+  }, []);
   return (
     <>
-      <h1>Hi from home page</h1>
+      <h1>Here is all the recipes</h1>
+      <ul>
+        {getRecipes.map((recipe) => (
+          <li key={recipe.id}>{recipe.name}</li>
+        ))}
+      </ul>
     </>
   );
 };
-export default Home;
+
+export default RecipesList;
