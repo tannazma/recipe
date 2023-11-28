@@ -48,6 +48,7 @@ app.post("/form", async (req, res) => {
     "img_url" in requestBody
   ) {
     try {
+      console.log(requestBody)
       await prisma.recipe.create({
         data: { ...requestBody, userId: 1 },
       });

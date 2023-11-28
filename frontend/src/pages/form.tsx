@@ -23,8 +23,8 @@ const Form = () => {
       body: JSON.stringify({
         name: nameFromForm,
         instructions: instructionFromForm,
-        prep_time: preptimeFromForm,
-        serves: servesFromForm,
+        prep_time: Number(preptimeFromForm),
+        serves: Number(servesFromForm),
         img_url: imageUrlFromForm,
         ingredients: ingredientsFromForm,
       }),
