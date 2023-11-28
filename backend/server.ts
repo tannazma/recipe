@@ -36,11 +36,32 @@ app.get("/recipes/:id", async (req, res) => {
   res.status(401).send(aRecipe);
 });
 
-app.post("/form", (req, res) => {
-  const username = req.body.username;
-  const instruction = req.body.instruction;
-  res.send({ message: "POST RECEIVED!" });
-  res.send(recipes);
+app.post("/form", async (req, res) => {
+  const requestBody = req.body;
+
+  if (
+    "name" in requestBody &&
+    "instructions" in requestBody &&
+    "ingredients" in requestBody &&
+    "prep_time" in requestBody &&
+    "serves" in requestBody &&
+    "img_url" in requestBody
+  ) {
+    try {
+      await prisma.recipe.create({
+        data: { ...requestBody, userId: 1 },
+      });
+      console.log("POST RECEIVED!");
+      res.status(201).send(recipes);
+    } catch {
+      res.status(500).send({ message: "Something went wrong" });
+    }
+  } else {
+    res.status(400).send({
+      message:
+        '"name", "ingredients", "instructions", "prep_time", "serves", "img_url" and so on is required.',
+    });
+  }
 });
 
 app.listen(port, () => {
