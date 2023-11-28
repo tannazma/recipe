@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import express from "express";
 import cors from "cors";
 import { json } from "express";
+import recipes from "./prisma/data/recipes.json";
 
 const app = express();
 const port = 3001;
@@ -33,6 +34,10 @@ app.get("/recipes/:id", async (req, res) => {
     return; // use an empty return here
   }
   res.status(401).send(aRecipe);
+});
+
+app.post("/form", (req, res) => {
+  res.send(recipes);
 });
 
 app.listen(port, () => {
