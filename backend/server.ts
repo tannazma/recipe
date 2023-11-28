@@ -19,6 +19,22 @@ app.get("/recipes", async (req, res) => {
   res.status(401).send(allRecipes);
 });
 
+app.get("/recipes/:id", async (req, res) => {
+  const idAsNumber = Number(req.params.id);
+  const aRecipe = await prisma.recipe.findUnique({
+    where: {
+      id: idAsNumber,
+    },
+  });
+  if (!aRecipe) {
+    res.status(404).send({
+      message: "Recipe with that id not found",
+    });
+    return; // use an empty return here
+  }
+  res.status(401).send(aRecipe);
+});
+
 app.listen(port, () => {
   console.log(`⚡ Server listening on port: ${port}`);
 });
