@@ -37,6 +37,9 @@ app.get("/recipes/:id", async (req, res) => {
 });
 
 app.post("/form", (req, res) => {
+  const username = req.body.username;
+  const instruction = req.body.instruction;
+  res.send({ message: "POST RECEIVED!" });
   res.send(recipes);
 });
 
