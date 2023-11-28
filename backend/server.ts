@@ -1,10 +1,14 @@
 import { PrismaClient } from "@prisma/client";
 import express from "express";
-import recipes from "./prisma/data/recipes.json";
+import cors from "cors";
+import { json } from "express";
 
 const app = express();
 const port = 3001;
 const prisma = new PrismaClient();
+
+app.use(json());
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Hello, world!");
