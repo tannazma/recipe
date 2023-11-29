@@ -3,6 +3,8 @@ import express from "express";
 import cors from "cors";
 import { json } from "express";
 import recipes from "./prisma/data/recipes.json";
+import { Category } from "../frontend/types";
+
 
 const app = express();
 const port = 3001;
@@ -18,6 +20,11 @@ app.get("/", (req, res) => {
 app.get("/recipes", async (req, res) => {
   const allRecipes = await prisma.recipe.findMany({});
   res.status(401).send(allRecipes);
+});
+
+app.get("/categories", async (req, res) => {
+  const allCategories = await prisma.category.findMany({});
+  res.status(401).send(allCategories);
 });
 
 app.get("/recipes/:id", async (req, res) => {
