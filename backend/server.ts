@@ -5,7 +5,6 @@ import { json } from "express";
 import recipes from "./prisma/data/recipes.json";
 import { Category } from "../frontend/types";
 
-
 const app = express();
 const port = 3001;
 const prisma = new PrismaClient();
