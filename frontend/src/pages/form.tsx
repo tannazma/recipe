@@ -4,6 +4,8 @@ import { Category } from "../../types";
 const Form = () => {
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [categories, setCategories] = useState<Category[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<Category[]>([]);
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch("http://localhost:3001/categories");
@@ -38,6 +40,7 @@ const Form = () => {
         serves: Number(servesFromForm),
         img_url: imageUrlFromForm,
         ingredients: ingredientsFromForm,
+        categories: selectedCategories,
       }),
     });
 
