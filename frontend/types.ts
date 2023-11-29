@@ -5,4 +5,8 @@ export interface Recipe {
   serves: number;
   userId: number;
 }
-export type Category = "Breakfast" | "Lunch" | "Dinner" | "Dessert";
+export interface Category{
+  id: number;
+  name: string;
+  img_url: string;
+}
