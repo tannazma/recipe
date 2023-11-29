@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Categories, Recipe } from "../../types";
 import NavigationBar from "../../components/NavigationBar";
-import Header from "../../components/header";
-import RecipeCard from "../../components/recipeCard";
+import Header from "../../components/Header";
+import RecipeCard from "../../components/RecipeCard";
 
 const RecipesList = () => {
   const [getRecipes, setRecipes] = useState<Recipe[]>([]);
