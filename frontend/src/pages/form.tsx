@@ -1,7 +1,18 @@
+import { FormEvent, useEffect, useState } from "react";
 import { Category } from "../../types";
 
 const Form = () => {
   const [submitted, setSubmitted] = useState<boolean>(false);
+  const [categories, setCategories] = useState<Category[]>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("http://localhost:3001/categories");
+      const data = await response.json();
+      console.log(data);
+      setCategories(data);
+    };
+    fetchData();
+  }, []);
 
   const handleForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
