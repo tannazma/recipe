@@ -69,9 +69,10 @@ form {
 
 .background4,
 .background1 {
-  width: 100vw;
-  object-fit: contain;
   object-position: top;
+  object-fit: cover;
+  max-height: 50vh;
+  width: 100vw;
 }
 .navigation {
   margin-left: auto;
