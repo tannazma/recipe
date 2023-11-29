@@ -94,7 +94,7 @@ const Form = () => {
       <div className="navigation">
         <NavigationBar />
       </div>
-      <Header />
+      <Header src="/bg-4.png" alt="Background4" width={1920} height={877.28} className="background4"/>;
       <div className="form-container">
         <h1 className="newRecipeTitle">Add New Recipe</h1>
         <form className="my-form" onSubmit={handleForm}>
