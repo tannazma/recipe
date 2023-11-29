@@ -153,7 +153,7 @@ const Form = () => {
           <label>
             {"Image Url"}
             <input
-              type="file"
+              type="text"
               id="img_url"
               name="image url"
               onChange={(e) => setImageUrl(e.target.value)}
