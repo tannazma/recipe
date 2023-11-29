@@ -3,6 +3,7 @@ import { Categories, Recipe } from "../../types";
 import NavigationBar from "../../components/NavigationBar";
 import Header from "../../components/Header";
 import RecipeCard from "../../components/RecipeCard";
+import SideBar from "../../components/SideBar";
 
 const RecipesList = () => {
   const [getRecipes, setRecipes] = useState<Recipe[]>([]);
@@ -39,16 +40,14 @@ const RecipesList = () => {
       />
       <div className="main">
         <h1 className="home">Home Chef Recipes</h1>
-        {filteredRecipes.map((recipe) => (
-          <RecipeCard key={recipe.id} recipe={recipe} />
-        ))}
-        <button onClick={() => setSelectedCategory("All")}>All</button>
-        <button onClick={() => setSelectedCategory("Breakfast")}>
-          Breakfast
-        </button>
-        <button onClick={() => setSelectedCategory("Lunch")}>Lunch</button>
-        <button onClick={() => setSelectedCategory("Dinner")}>Dinner</button>
-        <button onClick={() => setSelectedCategory("Dessert")}>Dessert</button>
+        <div className="sidebar-container">
+          <SideBar setSelectedCategory={setSelectedCategory} />
+        </div>
+        <div className="recipe-list">
+          {filteredRecipes.map((recipe) => (
+            <RecipeCard key={recipe.id} recipe={recipe} />
+          ))}
+        </div>
       </div>
     </>
   );
