@@ -1,8 +1,11 @@
 const NavigationBar = () => {
     return (
         <nav className="navigation">
-          <NavItem text="home" href="/" />
-          <NavItem text="login" href="/login" />
+      <p className="HomeChefRecipes">🥘 HomeChefRecipes</p>
+      <div className="home-login">
+        <NavItem text="Home" href="/" />
+        <NavItem text="Login" href="/login" />
+      </div>
         </nav>
     );
   };
