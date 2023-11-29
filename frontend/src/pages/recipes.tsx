@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Recipe } from "../../types";
+import NavigationBar from "../../components/navigation";
 
 const RecipesList = () => {
   const [getRecipes, setRecipes] = useState<Recipe[]>([]);
@@ -15,6 +16,7 @@ const RecipesList = () => {
   }, []);
   return (
     <>
+      <NavigationBar />
       <h1>Here is all the recipes</h1>
       <ul>
         {getRecipes.map((recipe) => (
