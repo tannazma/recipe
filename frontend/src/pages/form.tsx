@@ -85,6 +85,7 @@ const Form = () => {
                 <input
                   type="checkbox"
                   value={category.id}
+                  onChange={handleCategoryChange}
                 />
                 {category.name}
               </label>
