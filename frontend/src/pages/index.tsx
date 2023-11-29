@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Categories, Recipe } from "../../types";
 import NavigationBar from "../../components/navigation";
+import Header from "../../components/header";
 
 const RecipesList = () => {
   const [getRecipes, setRecipes] = useState<Recipe[]>([]);
@@ -28,7 +29,14 @@ const RecipesList = () => {
   return (
     <>
       <NavigationBar />
-      <h1>Here is all the recipes</h1>
+      <Header
+        src="/bg-1.png"
+        alt="Background1"
+        width={1920}
+        height={877.28}
+        className="background1"
+      />
+      ;<h1 className="home">Home Chef Recipes</h1>
       {filteredRecipes.map((recipe) => (
         <li key={recipe.id}>
           Name: {recipe.name}
