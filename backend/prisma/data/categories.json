@@ -1,7 +1,7 @@
 [
   {
     "id":1,
-    "name": "breakfast",
+    "name": "Breakfast",
     "img_url": "🍳",
     "recipes": {
       "connect": [
@@ -16,7 +16,7 @@
   },
   {
     "id":2,
-    "name": "lunch",
+    "name": "Lunch",
     "img_url": "🥯",
     "recipes": {
       "connect": [
@@ -31,7 +31,7 @@
   },
   {
     "id":3,
-    "name": "dinner",
+    "name": "Dinner",
     "img_url": "🥘",
     "recipes": {
       "connect": [
@@ -46,7 +46,7 @@
   },
   {
     "id":4,
-    "name": "dessert",
+    "name": "Dessert",
     "img_url": "🧁",
     "recipes": {
       "connect": [
