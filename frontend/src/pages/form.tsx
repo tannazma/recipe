@@ -16,6 +16,22 @@ const Form = () => {
     fetchData();
   }, []);
 
+  const handleCategoryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const categoryId = Number(event.target.value);
+    if (selectedCategories.some((category) => category.id === categoryId)) {
+      setSelectedCategories(
+        selectedCategories.filter((category) => category.id !== categoryId)
+      );
+    } else {
+      const category = categories.find(
+        (category) => category.id === categoryId
+      );
+      if (category) {
+        setSelectedCategories([...selectedCategories, category]);
+      }
+    }
+  };
+
   const handleForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
