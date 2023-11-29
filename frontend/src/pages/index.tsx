@@ -1,8 +1,19 @@
 import { useEffect, useState } from "react";
-import { Recipe } from "../../types";
+import { Categories, Recipe } from "../../types";
 
 const RecipesList = () => {
   const [getRecipes, setRecipes] = useState<Recipe[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<Categories>("All");
+
+  const filteredRecipes = getRecipes.filter((recipe) => {
+    return (
+      selectedCategory === "All" ||
+      recipe.categories?.some((category) => {
+        // console.log(category.name, selectedCategory);
+        return category.name === selectedCategory;
+      })
+    );
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,11 +27,20 @@ const RecipesList = () => {
   return (
     <>
       <h1>Here is all the recipes</h1>
-      <ul>
-        {getRecipes.map((recipe) => (
-          <li key={recipe.id}>{recipe.name}</li>
-        ))}
-      </ul>
+      {filteredRecipes.map((recipe) => (
+        <li key={recipe.id}>
+          Name: {recipe.name}
+          <div>Prep time: {recipe.prep_time}</div>
+          <div>Category: {selectedCategory}</div>
+        </li>
+      ))}
+      <button onClick={() => setSelectedCategory("All")}>All</button>
+      <button onClick={() => setSelectedCategory("Breakfast")}>
+        Breakfast
+      </button>
+      <button onClick={() => setSelectedCategory("Lunch")}>Lunch</button>
+      <button onClick={() => setSelectedCategory("Dinner")}>Dinner</button>
+      <button onClick={() => setSelectedCategory("Dessert")}>Dessert</button>
     </>
   );
 };
