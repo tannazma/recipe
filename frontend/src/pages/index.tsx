@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Categories, Recipe } from "../../types";
+import NavigationBar from "../../components/navigation";
 
 const RecipesList = () => {
   const [getRecipes, setRecipes] = useState<Recipe[]>([]);
@@ -26,6 +27,7 @@ const RecipesList = () => {
   }, []);
   return (
     <>
+      <NavigationBar />
       <h1>Here is all the recipes</h1>
       {filteredRecipes.map((recipe) => (
         <li key={recipe.id}>
