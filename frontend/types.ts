@@ -4,9 +4,12 @@ export interface Recipe {
   prep_time: number;
   serves: number;
   userId: number;
+  categories: Category[]
 }
-export interface Category{
+export interface Category {
   id: number;
   name: string;
   img_url: string;
 }
+
+export type Categories = "All" | "Dessert" | "Dinner" | "Lunch" | "Breakfast";
