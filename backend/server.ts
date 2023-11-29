@@ -55,13 +55,22 @@ app.post("/form", async (req, res) => {
     "img_url" in requestBody
   ) {
     try {
-      console.log(requestBody)
-      await prisma.recipe.create({
-        data: { ...requestBody, userId: 1 },
+      console.log(requestBody);
+      const newRecipe = await prisma.recipe.create({
+        data: {
+          ...requestBody,
+          userId: 1,
+          categories: {
+            connect: requestBody.categories.map((category: Category) => ({
+              id: category.id,
+            })),
+          },
+        },
       });
       console.log("POST RECEIVED!");
-      res.status(201).send(recipes);
-    } catch {
+      res.status(201).send(newRecipe);
+    } catch (e) {
+      console.error(e);
       res.status(500).send({ message: "Something went wrong" });
     }
   } else {
