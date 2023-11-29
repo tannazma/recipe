@@ -78,6 +78,18 @@ const Form = () => {
             {"Image Url"}
             <input type="file" id="img_url" name="image url" />
           </label>
+          <label>
+            Categories:
+            {categories.map((category: Category) => (
+              <label key={category.id}>
+                <input
+                  type="checkbox"
+                  value={category.id}
+                />
+                {category.name}
+              </label>
+            ))}
+          </label>
           <button type="submit">Submit</button>
         </form>
         {submitted && <p>Thanks for submitting!</p>}
