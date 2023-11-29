@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Recipe } from "../../types";
-import NavigationBar from "../../components/navigation";
+import NavigationBar from "../../components/NavigationBar";
 
 const RecipesList = () => {
   const [getRecipes, setRecipes] = useState<Recipe[]>([]);
