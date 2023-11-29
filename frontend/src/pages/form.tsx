@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { Category } from "../../types";
 import Header from "../../components/header";
-import NavigationBar from "../../components/navigation";
+import NavigationBar from "../../components/NavigationBar";
 
 const Form = () => {
   const [submitted, setSubmitted] = useState<boolean>(false);
