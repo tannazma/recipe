@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import { Category } from "../../types";
-import Header from "../../components/header";
+import Header from "../../components/Header";
 import NavigationBar from "../../components/NavigationBar";
 
 const Form = () => {
