@@ -1,5 +1,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { Category } from "../../types";
+import Header from "../../components/header";
+import NavigationBar from "../../components/navigation";
 
 const Form = () => {
   const [submitted, setSubmitted] = useState<boolean>(false);
@@ -89,7 +91,11 @@ const Form = () => {
 
   return (
     <>
-      <div>
+      <div className="navigation">
+        <NavigationBar />
+      </div>
+      <Header />
+      <div className="form-container">
         <h1 className="newRecipeTitle">Add New Recipe</h1>
         <form className="my-form" onSubmit={handleForm}>
           <label>
@@ -122,26 +128,28 @@ const Form = () => {
               value={ingredients}
             />
           </label>
-          <label>
-            {"Prep time "}
-            <input
-              type="number"
-              id="prep_time"
-              name="prep time"
-              onChange={(e) => setPreptime(e.target.value)}
-              value={preptime}
-            />
-          </label>
-          <label>
-            {"Serves"}
-            <input
-              type="number"
-              id="serves"
-              name="serves"
-              onChange={(e) => setServes(e.target.value)}
-              value={serves}
-            />
-          </label>
+          <div className="preptime-serves">
+            <label>
+              {"Prep time "}
+              <input
+                type="number"
+                id="prep_time"
+                name="prep time"
+                onChange={(e) => setPreptime(e.target.value)}
+                value={preptime}
+              />
+            </label>
+            <label>
+              {"Serves"}
+              <input
+                type="number"
+                id="serves"
+                name="serves"
+                onChange={(e) => setServes(e.target.value)}
+                value={serves}
+              />
+            </label>
+          </div>
           <label>
             {"Image Url"}
             <input
@@ -166,7 +174,9 @@ const Form = () => {
             ))}
           </label>
           <div className="botton-container">
-            <button type="submit" className="save">Save</button>
+            <button type="submit" className="save">
+              Save
+            </button>
             <button type="button" onClick={handleCancel} className="cancel">
               Cancel
             </button>
