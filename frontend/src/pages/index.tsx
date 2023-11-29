@@ -37,17 +37,19 @@ const RecipesList = () => {
         height={877.28}
         className="background1"
       />
-      ;<h1 className="home">Home Chef Recipes</h1>
-      {filteredRecipes.map((recipe) => (
-        <RecipeCard key={recipe.id} recipe={recipe} />
-      ))}
-      <button onClick={() => setSelectedCategory("All")}>All</button>
-      <button onClick={() => setSelectedCategory("Breakfast")}>
-        Breakfast
-      </button>
-      <button onClick={() => setSelectedCategory("Lunch")}>Lunch</button>
-      <button onClick={() => setSelectedCategory("Dinner")}>Dinner</button>
-      <button onClick={() => setSelectedCategory("Dessert")}>Dessert</button>
+      <div className="main">
+        <h1 className="home">Home Chef Recipes</h1>
+        {filteredRecipes.map((recipe) => (
+          <RecipeCard key={recipe.id} recipe={recipe} />
+        ))}
+        <button onClick={() => setSelectedCategory("All")}>All</button>
+        <button onClick={() => setSelectedCategory("Breakfast")}>
+          Breakfast
+        </button>
+        <button onClick={() => setSelectedCategory("Lunch")}>Lunch</button>
+        <button onClick={() => setSelectedCategory("Dinner")}>Dinner</button>
+        <button onClick={() => setSelectedCategory("Dessert")}>Dessert</button>
+      </div>
     </>
   );
 };
