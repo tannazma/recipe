@@ -31,6 +31,9 @@ const Form = () => {
       }
     }
   };
+  const handleCancel = () => {
+    setSelectedCategories([]);
+  };
 
   const handleForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -108,6 +111,9 @@ const Form = () => {
             ))}
           </label>
           <button type="submit">Submit</button>
+          <button type="button" onClick={handleCancel}>
+            Cancel
+          </button>
         </form>
         {submitted && <p>Thanks for submitting!</p>}
       </div>
