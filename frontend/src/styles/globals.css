@@ -11,4 +11,38 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 990px;
+  height: 1035px;
+  position: relative;
+  top: 747px;
+  left: 465px;
+  color: #ffffff;
+  box-shadow: 0px 7px 24px 0px #0000001a;
+}
+
+.newRecipeHeader {
+  width: 1920px;
+  height: 877.28px;
+}
+.cancel {
+  width: 174px;
+  height: 56px;
+  top: 1669px;
+  left: 714px;
+  border-radius: 300px;
+  background-color: #0d0d0d;
+  color: #f5f3ef;
+}
+.botton-container {
+  display: flex;
+  gap: 10px;
+}
+.save {
+  width: 174px;
+  height: 56px;
+  top: 1669px;
+  left: 514px;
+  border-radius: 300px;
+  background-color: #febd2f;
+  color: #000000;
 }
