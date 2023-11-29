@@ -160,8 +160,8 @@ const Form = () => {
               value={imageUrl}
             />
           </label>
-          <label>
-            Categories:
+          <label className="category">Categories:</label>
+          <div className="categoriesLable">
             {categories.map((category: Category) => (
               <label key={category.id}>
                 <input
@@ -172,7 +172,7 @@ const Form = () => {
                 {category.name}
               </label>
             ))}
-          </label>
+          </div>
           <div className="botton-container">
             <button type="submit" className="save">
               Save
