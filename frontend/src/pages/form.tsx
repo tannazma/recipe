@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { Category } from "../../types";
 
 const Form = () => {
   const [submitted, setSubmitted] = useState<boolean>(false);
@@ -42,11 +42,7 @@ const Form = () => {
         <form className="my-form" onSubmit={handleForm}>
           <label>
             {"Recipe Name "}
-            <input
-              id="recipeName"
-              name="name"
-              placeholder="Enter your name"
-            />
+            <input id="recipeName" name="name" placeholder="Enter your name" />
           </label>
           <label>
             {"Instructions "}
