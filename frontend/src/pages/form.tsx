@@ -5,6 +5,12 @@ const Form = () => {
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<Category[]>([]);
+  const [recipeName, setRecipeName] = useState("");
+  const [preptime, setPreptime] = useState("");
+  const [instructions, setInstructions] = useState("");
+  const [ingredients, setIngredients] = useState("");
+  const [serves, setServes] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,8 +37,20 @@ const Form = () => {
       }
     }
   };
+
+  const resetForm = () => {
+    setSelectedCategories([]);
+    setRecipeName("");
+    setPreptime("");
+    setInstructions("");
+    setIngredients("");
+    setServes("");
+    setImageUrl("");
+  };
+
   const handleCancel = () => {
     setSelectedCategories([]);
+    resetForm();
   };
 
   const handleForm = async (event: FormEvent<HTMLFormElement>) => {
@@ -66,6 +84,7 @@ const Form = () => {
     const postData = await postResponse.json();
     console.log(postData);
     console.log("We send the POST");
+    resetForm();
   };
 
   return (
@@ -75,27 +94,63 @@ const Form = () => {
         <form className="my-form" onSubmit={handleForm}>
           <label>
             {"Recipe Name "}
-            <input id="recipeName" name="name" placeholder="Enter your name" />
+            <input
+              id="recipeName"
+              name="name"
+              placeholder="Enter your name"
+              onChange={(e) => setRecipeName(e.target.value)}
+              value={recipeName}
+            />
           </label>
           <label>
             {"Instructions "}
-            <input type="text" id="instructions" name="instructions" />
+            <input
+              type="text"
+              id="instructions"
+              name="instructions"
+              onChange={(e) => setInstructions(e.target.value)}
+              value={instructions}
+            />
           </label>
           <label>
             {"Ingredients"}
-            <input type="text" id="ingredients" name="ingredients" />
+            <input
+              type="text"
+              id="ingredients"
+              name="ingredients"
+              onChange={(e) => setIngredients(e.target.value)}
+              value={ingredients}
+            />
           </label>
           <label>
             {"Prep time "}
-            <input type="number" id="prep_time" name="prep time" />
+            <input
+              type="number"
+              id="prep_time"
+              name="prep time"
+              onChange={(e) => setPreptime(e.target.value)}
+              value={preptime}
+            />
           </label>
           <label>
             {"Serves"}
-            <input type="number" id="serves" name="serves" />
+            <input
+              type="number"
+              id="serves"
+              name="serves"
+              onChange={(e) => setServes(e.target.value)}
+              value={serves}
+            />
           </label>
           <label>
             {"Image Url"}
-            <input type="file" id="img_url" name="image url" />
+            <input
+              type="file"
+              id="img_url"
+              name="image url"
+              onChange={(e) => setImageUrl(e.target.value)}
+              value={imageUrl}
+            />
           </label>
           <label>
             Categories:
