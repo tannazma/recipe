@@ -56,21 +56,46 @@ const RecipeDetailPage = () => {
         height={877.28}
         className="background3"
       />
-      <div>
+      <div className="recipe-container">
         {getRecipe !== null ? (
-          <div>
-            <h1>{getRecipe.name}</h1>
-            <img src={getRecipe.img_url} />
-            <p>Ingredients: {getRecipe.ingredients}</p>
-            <p>Instructions: {getRecipe.instructions}</p>
-            <div>
-              Category:
-              {getRecipe.category &&
-                getRecipe.category.map((category) => (
-                  <p key={category.id}>{category.name}</p>
-                ))}
+          <div className="recipe-wrapper">
+            <div className="recipe-title-image-rating-category-rating">
+              <h1 className="recipe-h1">{getRecipe.name}</h1>
+              {/* <img src={getRecipe.img_url} className="recipe-image" /> */}
+              <div className="recipe-category">
+                {getRecipe.category &&
+                  getRecipe.category.map((category) => (
+                    <h2 key={category.id} className="recipe-h2">
+                      {category.name}
+                    </h2>
+                  ))}
+              </div>
+              <div className="recipe-comment">
+                {/* {getRecipe.comment && */}
+                {/* getRecipe.comment.map((comment) => ( */}
+                {/* <p key={comment.id}> */}
+                <span className="star-btn2">★</span>
+                <span className="star-btn2">★</span>
+                <span className="star-btn2">★</span>
+                <span className="star-btn2">★</span>
+                {/* {comment.rating} */}
+                {/* </p> */}
+                {/* ))} */}
+              </div>
+            </div>
+            <div className="recipe-details">
+              <div>
+                <h2>{getRecipe.name}</h2>
+              </div>
+              <div>
+                <div>Serves {getRecipe.serves}</div>
+                <div>Prep-time: {getRecipe.prep_time}</div>
+              </div>
+              <div>Ingredients: {getRecipe.ingredients}</div>
+              <div>Instructions: {getRecipe.instructions}</div>
             </div>
             <div className="comment-wrapper">
+              <AddComment recipeId={idFromUrl} />
               {getRecipe.comment &&
                 getRecipe.comment.map((comment) => (
                   <CommentComponent comment={comment} />
@@ -80,7 +105,6 @@ const RecipeDetailPage = () => {
         ) : (
           <div>Url not found...</div>
         )}
-        <AddComment recipeId={idFromUrl} />
       </div>
     </>
   );
