@@ -7,8 +7,14 @@ interface CommentProps {
 
 const Comment = ({ comment }: CommentProps) => {
   return (
-    <div>
-      <span key={comment.id}>{comment.rating}</span>
+    <div className="comment-box">
+      <div>{comment.name}</div>
+      <span key={comment.id} className="star-btn">
+        {" "}
+        ☆ {comment.rating}
+      </span>
+      {comment.message}
+      <div>{comment.created_at}</div>
     </div>
   );
 };
