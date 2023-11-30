@@ -2,7 +2,6 @@ import { PrismaClient } from "@prisma/client";
 import express from "express";
 import cors from "cors";
 import { json } from "express";
-import recipes from "./prisma/data/recipes.json";
 import { Category } from "../frontend/types";
 
 const app = express();
@@ -49,6 +48,28 @@ app.get("/recipes/:id", async (req, res) => {
 app.get("/comments", async (req, res) => {
   const allComments = await prisma.comment.findMany({});
   res.status(401).send(allComments);
+});
+
+app.get("/comments/:id", async (req, res) => {
+  const idAsNumber = Number(req.params.id);
+  const aComment = await prisma.comment.findUnique({
+    where: {
+      id: idAsNumber,
+    },
+    select: {
+      name: true,
+      rating: true,
+      message: true,
+      created_at: true,
+    },
+  });
+  if (!aComment) {
+    res.status(404).send({
+      message: "Comment with that id not found",
+    });
+    return; // use an empty return here
+  }
+  res.status(401).send(aComment);
 });
 
 app.post("/form", async (req, res) => {
