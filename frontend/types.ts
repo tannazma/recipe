@@ -5,8 +5,11 @@ export interface Recipe {
   serves: number;
   userId: number;
   img_url: string;
-  rating: Comment[];
-  categories: Category[];
+  instructions: string;
+  ingredients: string;
+  comment: Comment[];
+  category: Category[];
+  user: User[];
 }
 export interface Category {
   id: number;
@@ -21,6 +24,12 @@ export interface Comment {
   name: string;
   message: string;
   created_at: string;
+}
+export interface User {
+  id: number;
+  username: string;
+  password: string;
+  recipeId: number;
 }
 
 export type Categories = "All" | "Dessert" | "Dinner" | "Lunch" | "Breakfast";
