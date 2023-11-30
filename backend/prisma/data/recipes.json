@@ -8,9 +8,7 @@
     "ingredients": "Tortillas, eggs, meat, vegetables",
     "prep_time": 30,
     "serves": 4,
-    "user": {
-      "connect": [{ "id": 5 }]
-    }
+    "userId": 5
   },
   {
     "id": 2,
@@ -21,9 +19,7 @@
     "ingredients": "Oats, milk, yogurt, sweetener, toppings",
     "prep_time": 5,
     "serves": 2,
-    "user": {
-      "connect": [{ "id": 4 }]
-    }
+    "userId": 4
   },
   {
     "id": 3,
@@ -34,9 +30,7 @@
     "ingredients": "Bread, avocado, salt, pepper",
     "prep_time": 10,
     "serves": 2,
-    "user": {
-      "connect": [{ "id": 3 }]
-    }
+    "userId": 3
   },
   {
     "id": 4,
@@ -47,9 +41,7 @@
     "ingredients": "Onions, peppers, tomatoes, eggs, spices",
     "prep_time": 40,
     "serves": 4,
-    "user": {
-      "connect": [{ "id": 1 }]
-    }
+    "userId": 1
   },
   {
     "id": 5,
@@ -60,8 +52,6 @@
     "ingredients": "Flour, baking powder, sugar, eggs, milk, butter",
     "prep_time": 20,
     "serves": 4,
-    "user": {
-      "connect": [{ "id": 2 }]
-    }
+    "userId": 2
   }
 ]
