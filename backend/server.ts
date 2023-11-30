@@ -53,6 +53,12 @@ app.get("/comments", async (req, res) => {
   res.status(401).send(allComments);
 });
 
+app.post("/comments", async (req, res) => {
+  const requestBody = req.body;
+  console.log("got the post request");
+  res.send(requestBody);
+});
+
 app.get("/comments/:id", async (req, res) => {
   const idAsNumber = Number(req.params.id);
   const aComment = await prisma.recipe.findUnique({
