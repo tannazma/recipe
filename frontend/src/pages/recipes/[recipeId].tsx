@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Category, User, Comment } from "../../../types";
 import { useRouter } from "next/router";
 import AddComment from "../../../components/AddComment";
+import NavigationBar from "../../../components/NavigationBar";
+import Header from "../../../components/Header";
 
 const RecipeDetailPage = () => {
   const router = useRouter();
@@ -45,6 +47,14 @@ const RecipeDetailPage = () => {
 
   return (
     <>
+      <NavigationBar />
+      <Header
+        src="/recipe.png"
+        alt="Background3"
+        width={1920}
+        height={877.28}
+        className="background3"
+      />
       <div>
         {getRecipe !== null ? (
           <div>
