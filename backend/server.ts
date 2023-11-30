@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 app.get("/recipes", async (req, res) => {
   const allRecipes = await prisma.recipe.findMany({
     include: {
-      categories: true,
+      category: true,
     },
   });
   res.status(401).send(allRecipes);
@@ -35,6 +35,11 @@ app.get("/recipes/:id", async (req, res) => {
     where: {
       id: idAsNumber,
     },
+    include: {
+      category: true,
+      comment: true,
+      user: true,
+    },
   });
   if (!aRecipe) {
     res.status(404).send({
@@ -42,7 +47,8 @@ app.get("/recipes/:id", async (req, res) => {
     });
     return; // use an empty return here
   }
-  res.status(401).send(aRecipe);
+  res.status(200).send(aRecipe);
+  console.log(aRecipe.category);
 });
 
 app.get("/comments", async (req, res) => {
