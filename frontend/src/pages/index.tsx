@@ -4,6 +4,7 @@ import NavigationBar from "../../components/NavigationBar";
 import Header from "../../components/Header";
 import RecipeCard from "../../components/RecipeCard";
 import SideBar from "../../components/SideBar";
+import Link from "next/link";
 
 const RecipesList = () => {
   const [getRecipes, setRecipes] = useState<Recipe[]>([]);
@@ -45,7 +46,9 @@ const RecipesList = () => {
         </div>
         <div className="recipe-list">
           {filteredRecipes.map((recipe) => (
-            <RecipeCard key={recipe.id} recipe={recipe} />
+            <Link href={`/recipes/${recipe.id}`}>
+              <RecipeCard key={recipe.id} recipe={recipe} />
+            </Link>
           ))}
         </div>
       </div>
