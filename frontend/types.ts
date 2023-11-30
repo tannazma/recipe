@@ -5,7 +5,7 @@ export interface Recipe {
   serves: number;
   userId: number;
   img_url: string;
-  rating: comment[];
+  rating: Comment[];
   categories: Category[];
 }
 export interface Category {
@@ -13,7 +13,7 @@ export interface Category {
   name: string;
   img_url: string;
 }
-export interface comment {
+export interface Comment {
   id: number;
   recipeId: number;
   rating: number;
