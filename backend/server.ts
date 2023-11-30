@@ -56,7 +56,10 @@ app.get("/comments", async (req, res) => {
 app.post("/comments", async (req, res) => {
   const requestBody = req.body;
   console.log("got the post request");
-  res.send(requestBody);
+  const commentsData = await prisma.comment.create({
+    data: { ...requestBody, created_at: new Date() },
+  });
+  res.send(commentsData);
 });
 
 app.get("/comments/:id", async (req, res) => {
