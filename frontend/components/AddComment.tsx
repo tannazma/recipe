@@ -39,13 +39,11 @@ export const AddComment = ({ recipeId }: recipeIdProp) => {
     window.location.reload();
   };
   return (
-    <div>
-      <form
-        className="add-comment"
-        onSubmit={submitComment}
-      >
-        <h1>Add Comment</h1>
-        <label>
+    <div className="comment-container">
+      <h1 className="add-comment-title">Add Comment</h1>
+      <form className="add-comment" onSubmit={submitComment}>
+        <div className="name-rating">
+        <label className="comment-name">
           {" "}
           Name
           <input
@@ -57,19 +55,7 @@ export const AddComment = ({ recipeId }: recipeIdProp) => {
             }}
           ></input>
         </label>
-        <label>
-          {" "}
-          Review
-          <input
-            id="review"
-            type="text"
-            name="review"
-            onChange={() => {
-              handleNameInput;
-            }}
-          ></input>
-        </label>
-        <label>
+        <label className="comment-rating">
           {" "}
           Rating
           <input
@@ -81,7 +67,23 @@ export const AddComment = ({ recipeId }: recipeIdProp) => {
             }}
           ></input>
         </label>
-        <button type="submit">Save</button>
+        </div>
+        <label className="comment-review">
+          {" "}
+          Review
+          <textarea
+            id="review"
+            name="review"
+            rows={5}
+            onChange={() => {
+              handleNameInput;
+            }}
+          ></textarea>
+        </label>
+
+        <button type="submit" className="comment-button">
+          Save
+        </button>
       </form>
       {submitted && <p>Thanks for submitted comment.</p>}
     </div>
