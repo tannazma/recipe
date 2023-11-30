@@ -100,8 +100,8 @@ app.post("/recipes", async (req, res) => {
         data: {
           ...requestBody,
           userId: 1,
-          categories: {
-            connect: requestBody.categories.map((category: Category) => ({
+          category: {
+            connect: requestBody.category.map((category: Category) => ({
               id: category.id,
             })),
           },
