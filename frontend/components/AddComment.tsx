@@ -12,6 +12,7 @@ export const AddComment = ({ recipeId }: recipeIdProp) => {
   };
 
   const submitComment = async (event: FormEvent<HTMLFormElement>) => {
+    console.log(event);
     event.preventDefault();
     console.log(event);
     setSubmitted(true);
@@ -27,8 +28,8 @@ export const AddComment = ({ recipeId }: recipeIdProp) => {
       },
       body: JSON.stringify({
         name: nameFromComment,
-        rating: ratingFromComment,
-        review: reviewFromComment,
+        rating: Number(ratingFromComment),
+        message: reviewFromComment,
         recipeId: recipeId,
       }),
     });
@@ -40,9 +41,7 @@ export const AddComment = ({ recipeId }: recipeIdProp) => {
     <div>
       <form
         className="add-comment"
-        onSubmit={() => {
-          submitComment;
-        }}
+        onSubmit={submitComment}
       >
         <h1>Add Comment</h1>
         <label>
