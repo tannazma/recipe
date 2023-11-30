@@ -197,15 +197,18 @@ nav a {
   align-items: center;
 }
 .add-comment {
-  width: 40vw;
+  width: 31vw;
   box-shadow: 0px 7px 24px 0px #0000001a;
   border-radius: 5px;
   background-color: #ffffff;
   display: grid;
-  grid-template-rows: 100px 1fr 100px;
+  grid-template-rows: 20px 100px 20px;
   grid-column: span 1;
   border-radius: 10px;
-  padding-bottom: 40px;
+  padding: 20px;
+}
+textarea {
+  width: 100%;
 }
 .comment-title {
   text-align: center;
@@ -231,7 +234,13 @@ nav a {
   grid-row: 3;
   align-self: center;
   justify-self: start;
-  padding: 20px 40px;
+  padding: 13px 40px;
   border-radius: 20px;
   background-color: #febd2f;
+  border: none;
+}
+input, textarea {
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  display: block;
 }
