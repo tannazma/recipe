@@ -71,7 +71,7 @@ form {
 .background1 {
   object-position: top;
   object-fit: cover;
-  max-height: 50vh;
+  max-height: max(50vh, 400px);
   width: 100vw;
 }
 .navigation {
