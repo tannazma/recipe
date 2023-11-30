@@ -18,7 +18,8 @@ const RecipeDetailPAge = () => {
     ingredients: string;
     prep_time: number;
     serves: number;
-    userId: number;
+    user: User[];
+    comment: Comment[];
   }
 
   useEffect(() => {
@@ -50,6 +51,20 @@ const RecipeDetailPAge = () => {
               {getRecipe.category &&
                 getRecipe.category.map((category) => (
                   <p key={category.id}>{category.name}</p>
+                ))}
+            </div>
+            <div>
+              <p>Comment rating: </p>
+              {getRecipe.comment &&
+                getRecipe.comment.map((comment) => (
+                  <span key={comment.id}>{comment.rating}</span>
+                ))}
+            </div>
+            <div>
+              <p>Comment message: </p>
+              {getRecipe.comment &&
+                getRecipe.comment.map((comment) => (
+                  <span key={comment.id}>{comment.message}</span>
                 ))}
             </div>
           </div>

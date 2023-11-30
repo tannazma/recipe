@@ -49,6 +49,7 @@ app.get("/recipes/:id", async (req, res) => {
   }
   res.status(200).send(aRecipe);
   console.log(aRecipe.category);
+  console.log(aRecipe.comment);
 });
 
 app.get("/comments", async (req, res) => {
@@ -58,15 +59,19 @@ app.get("/comments", async (req, res) => {
 
 app.get("/comments/:id", async (req, res) => {
   const idAsNumber = Number(req.params.id);
-  const aComment = await prisma.comment.findUnique({
+  const aComment = await prisma.recipe.findUnique({
     where: {
       id: idAsNumber,
     },
-    select: {
-      name: true,
-      rating: true,
-      message: true,
-      created_at: true,
+    // include: {
+    //   category: {
+    //     select: { id: true, name: true },
+    //   },
+    // },
+    include: {
+      category: true,
+      comment: true,
+      user: true,
     },
   });
   if (!aComment) {
