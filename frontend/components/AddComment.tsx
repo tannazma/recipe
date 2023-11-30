@@ -36,7 +36,7 @@ export const AddComment = ({ recipeId }: recipeIdProp) => {
     const postData = await postResponse.json();
     console.log(postData);
     console.log("we sent the post");
-    window.location.reload()
+    window.location.reload();
   };
   return (
     <div>
