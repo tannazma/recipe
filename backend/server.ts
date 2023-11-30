@@ -83,7 +83,7 @@ app.get("/comments/:id", async (req, res) => {
   res.status(401).send(aComment);
 });
 
-app.post("/form", async (req, res) => {
+app.post("/recipes", async (req, res) => {
   const requestBody = req.body;
 
   if (
