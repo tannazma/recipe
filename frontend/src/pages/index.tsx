@@ -51,6 +51,17 @@ const RecipesList = () => {
             </Link>
           ))}
         </div>
+        <Link href="/recipes">
+          <div className="add-new-recipe">
+            <Header
+              src="/new-recipe.png"
+              alt="Background5"
+              width={1920}
+              height={877.28}
+              className="background5"
+            />
+          </div>
+        </Link>
       </div>
     </>
   );
