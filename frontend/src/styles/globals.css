@@ -280,4 +280,53 @@ textarea {
   justify-content: center;
   margin-bottom: 50px;
   margin-top: 50px;
+  flex-direction: row;
+  align-items: center;
+}
+.recipe-container {
+  display: grid;
+  gap: 40px;
+  box-shadow: 0px 7px 24px 0px #0000001a;
+  background-color: var(--background);
+  border-radius: 10px;
+}
+.recipe-h1 {
+  font-size: 4rem;
+  color: white;
+}
+.recipe-title-image-rating-category-rating {
+  position: absolute;
+  left: 500px;
+  top: 150px;
+  padding-bottom: 40px;
+}
+.recipe-h2 {
+  color: white;
+  text-align: center;
+}
+.recipe-comment {
+  text-align: center;
+}
+.star-btn2 {
+  font-size: 5rem;
+  color: gold;
+}
+.recipe-details {
+  display: grid;
+  grid-gap: 40px;
+  gap: 40px;
+  grid-template-rows: repeat(6, 1fr);
+  top: 595px;
+  left: 465px;
+  box-shadow: 0px 7px 24px 0px #0000001a;
+  background-color: #ffffff;
+  padding: 50px;
+  border-radius: 10px;
+  width: 60vw;
+  margin-top: -150px;
+}
+.recipe-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
