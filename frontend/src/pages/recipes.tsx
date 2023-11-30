@@ -1,33 +1,3 @@
-// import { useEffect, useState } from "react";
-// import { Recipe } from "../../types";
-// import NavigationBar from "../../components/NavigationBar";
-
-// const RecipesList = () => {
-//   const [getRecipes, setRecipes] = useState<Recipe[]>([]);
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       const response = await fetch("http://localhost:3001/recipes");
-//       const data = await response.json();
-//       console.log(data);
-//       setRecipes(data);
-//     };
-//     fetchData();
-//   }, []);
-//   return (
-//     <>
-//       <NavigationBar />
-//       <h1>Here is all the recipes</h1>
-//       <ul>
-//         {getRecipes.map((recipe) => (
-//           <li key={recipe.id}>{recipe.name}</li>
-//         ))}
-//       </ul>
-//     </>
-//   );
-// };
-
-// export default RecipesList;
 import { FormEvent, useEffect, useState } from "react";
 import { Category } from "../../types";
 import Header from "../../components/Header";
@@ -124,7 +94,14 @@ const Recipes = () => {
       <div className="navigation">
         <NavigationBar />
       </div>
-      <Header src="/bg-4.png" alt="Background4" width={1920} height={877.28} className="background4"/>;
+      <Header
+        src="/bg-4.png"
+        alt="Background4"
+        width={1920}
+        height={877.28}
+        className="background4"
+      />
+      ;
       <div className="form-container">
         <h1 className="newRecipeTitle">Add New Recipe</h1>
         <form className="my-form" onSubmit={handleForm}>
