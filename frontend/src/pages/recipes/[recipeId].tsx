@@ -70,16 +70,10 @@ const RecipeDetailPage = () => {
                   <p key={category.id}>{category.name}</p>
                 ))}
             </div>
-            <div>
-              <p>Comment rating: </p>
-              {getRecipe.comment &&
-                getRecipe.comment.map((comment) => <CommentComponent comment={comment}/>)}
-            </div>
-            <div>
-              <p>Comment message: </p>
+            <div className="comment-wrapper">
               {getRecipe.comment &&
                 getRecipe.comment.map((comment) => (
-                  <span key={comment.id}>{comment.message}</span>
+                  <CommentComponent comment={comment} />
                 ))}
             </div>
           </div>

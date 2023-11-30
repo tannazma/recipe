@@ -75,6 +75,19 @@ form {
   max-height: max(50vh, 400px);
   width: 100vw;
 }
+.background5 {
+  margin-top: 50px;
+  border-radius: 40px;
+  object-fit: cover;
+  max-height: max(50vh, 400px);
+  width: 100vw;
+  margin-bottom: 50px;
+  width: 80vw;
+}
+.add-new-recipe {
+  width: 100vw;
+  text-align: center;
+}
 .navigation {
   margin-left: auto;
   margin-right: auto;
@@ -239,8 +252,32 @@ textarea {
   background-color: #febd2f;
   border: none;
 }
-input, textarea {
+input,
+textarea {
   border: 1px solid lightgray;
   border-radius: 3px;
   display: block;
+}
+.comment-box {
+  width: 31vw;
+  box-shadow: 0px 7px 24px 0px #0000001a;
+  border-radius: 5px;
+  background-color: #ffffff;
+  display: grid;
+  grid-template-rows: 20px 100px 20px;
+  grid-column: span 1;
+  border-radius: 10px;
+  padding: 20px;
+}
+.star-btn {
+  font-size: 2rem;
+  color: gold;
+}
+.comment-wrapper {
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
