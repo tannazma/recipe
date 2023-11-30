@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { Category, User, Comment } from "../../../types";
 import { useRouter } from "next/router";
+import AddComment from "../../../components/AddComment";
 
-const RecipeDetailPAge = () => {
+const RecipeDetailPage = () => {
   const router = useRouter();
-  const idFromUrl = router.query.recipeId;
+  const idFromUrl = Number(router.query.recipeId);
   console.log(idFromUrl);
 
   const [getRecipe, setRecipe] = useState<Recipe | null>(null);
@@ -23,7 +24,7 @@ const RecipeDetailPAge = () => {
   }
 
   useEffect(() => {
-    if (idFromUrl === undefined) {
+    if (isNaN(idFromUrl)) {
       return;
     }
 
@@ -37,6 +38,11 @@ const RecipeDetailPAge = () => {
     };
     fetchData();
   }, [idFromUrl]);
+
+  if (isNaN(idFromUrl)) {
+    return <div>recipe not found</div>;
+  }
+
   return (
     <>
       <div>
@@ -71,8 +77,9 @@ const RecipeDetailPAge = () => {
         ) : (
           <div>Url not found...</div>
         )}
+        <AddComment recipeId={idFromUrl} />
       </div>
     </>
   );
 };
-export default RecipeDetailPAge;
+export default RecipeDetailPage;
