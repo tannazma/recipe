@@ -16,8 +16,12 @@ app.get("/", (req, res) => {
 });
 
 app.get("/recipes", async (req, res) => {
-  const allRecipes = await prisma.recipe.findMany({});
-  res.status(401).send(allRecipes);
+  const allRecipes = await prisma.recipe.findMany({
+    include: {
+      category: true,
+    },
+  });
+  res.status(200).send(allRecipes);
 });
 
 app.get("/categories", async (req, res) => {
