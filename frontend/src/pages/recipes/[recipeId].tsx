@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import AddComment from "../../../components/AddComment";
 import NavigationBar from "../../../components/NavigationBar";
 import Header from "../../../components/Header";
+import CommentComponent from "../../../components/Comment";
 
 const RecipeDetailPage = () => {
   const router = useRouter();
@@ -72,9 +73,7 @@ const RecipeDetailPage = () => {
             <div>
               <p>Comment rating: </p>
               {getRecipe.comment &&
-                getRecipe.comment.map((comment) => (
-                  <span key={comment.id}>{comment.rating}</span>
-                ))}
+                getRecipe.comment.map((comment) => <CommentComponent comment={comment}/>)}
             </div>
             <div>
               <p>Comment message: </p>
