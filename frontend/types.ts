@@ -14,7 +14,12 @@ export interface Category {
   img_url: string;
 }
 export interface comment {
+  id: number;
+  recipeId: number;
   rating: number;
+  name: string;
+  message: string;
+  created_at: string;
 }
 
 export type Categories = "All" | "Dessert" | "Dinner" | "Lunch" | "Breakfast";
