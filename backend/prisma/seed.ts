@@ -20,13 +20,10 @@ const seed = async () => {
   }
 
   for (let i = 0; i < users.length; i += 1) {
-    const usersData = users[i];
-    if (usersData) {
+    const userData = users[i];
+    if (userData) {
       await prisma.user.create({
-        data: {
-          username: usersData.username,
-          password: usersData.password,
-        },
+        data: userData,
       });
     }
   }
@@ -34,29 +31,15 @@ const seed = async () => {
   for (let i = 0; i < recipes.length; i += 1) {
     const recipesData = recipes[i];
     await prisma.recipe.create({
-      data: {
-        name: recipesData.name,
-        img_url: recipesData.img_url,
-        instructions: recipesData.instructions,
-        ingredients: recipesData.ingredients,
-        prep_time: recipesData.prep_time,
-        serves: recipesData.serves,
-        user: { connect: { id: recipesData.id } },
-      },
+      data: recipesData,
     });
   }
 
   for (let i = 0; i < comments.length; i += 1) {
-    const commentsData = comments[i];
-    if (commentsData) {
+    const commentData = comments[i];
+    if (commentData) {
       await prisma.comment.create({
-        data: {
-          name: commentsData.name,
-          message: commentsData.message,
-          rating: commentsData.rating,
-          created_at: commentsData.created_at,
-          recipeId: commentsData.recipeId,
-        },
+        data: commentData,
       });
     }
   }
