@@ -12,6 +12,7 @@ export interface Category {
   id: number;
   name: string;
   img_url: string;
+  recipes: Recipe[];
 }
 export interface Comment {
   id: number;

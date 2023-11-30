@@ -12,7 +12,7 @@ const RecipesList = () => {
   const filteredRecipes = getRecipes.filter((recipe) => {
     return (
       selectedCategory === "All" ||
-      recipe.categories?.some((category) => {
+      recipe.category?.some((category) => {
         // console.log(category.name, selectedCategory);
         return category.name === selectedCategory;
       })
