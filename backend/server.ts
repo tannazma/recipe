@@ -46,6 +46,11 @@ app.get("/recipes/:id", async (req, res) => {
   res.status(401).send(aRecipe);
 });
 
+app.get("/comments", async (req, res) => {
+  const allComments = await prisma.comment.findMany({});
+  res.status(401).send(allComments);
+});
+
 app.post("/form", async (req, res) => {
   const requestBody = req.body;
 
