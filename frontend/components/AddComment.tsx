@@ -40,7 +40,7 @@ export const AddComment = ({ recipeId }: recipeIdProp) => {
   };
   return (
     <div className="comment-container">
-      <h1 className="add-comment-title">Add Comment</h1>
+      <h1 className="add-comment-title">Add A Comment</h1>
       <form className="add-comment" onSubmit={submitComment}>
         <div className="name-rating">
         <label className="comment-name">
