@@ -3,6 +3,8 @@ import express from "express";
 import cors from "cors";
 import { json } from "express";
 import { Category } from "../frontend/types";
+import { AuthMiddleware } from "./auth/middleware";
+import { toToken } from "./auth/jwt";
 
 const app = express();
 const port = 3001;
@@ -127,6 +129,29 @@ app.post("/recipes", async (req, res) => {
       message:
         '"name", "ingredients", "instructions", "prep_time", "serves", "img_url" and so on is required.',
     });
+  }
+});
+
+app.post("/login", AuthMiddleware, async (req, res) => {
+  const requestBody = req.body;
+  if ("name" in requestBody && "password" in requestBody) {
+    try {
+      const userToLogin = await prisma.user.findFirst({
+        where: {
+          username: requestBody.name,
+        },
+      });
+      if (userToLogin && userToLogin.password === requestBody.password) {
+        const token = toToken({ userId: userToLogin.id });
+        res.status(200).send({ message: "User logged in!", token: token });
+        return;
+      }
+      res.status(400).send({ message: "Login failed" });
+    } catch (e) {
+      res.status(500).send({ message: "Something went wrong" });
+    }
+  } else {
+    res.status(400).send({ message: "'name' and 'password' are required!" });
   }
 });
 
