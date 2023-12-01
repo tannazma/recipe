@@ -45,7 +45,7 @@ const RecipesList = () => {
           <SideBar setSelectedCategory={setSelectedCategory} />
         </div>
         <div className="recipe-list">
-          {filteredRecipes.map((recipe) => (
+          {filteredRecipes.reverse().map((recipe) => (
             <Link href={`/recipes/${recipe.id}`}>
               <RecipeCardTwo key={recipe.id} recipe={recipe} />
             </Link>
