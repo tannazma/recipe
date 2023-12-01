@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Categories, Recipe } from "../../types";
 import NavigationBar from "../../components/NavigationBar";
 import Header from "../../components/Header";
-import RecipeCard from "../../components/RecipeCard";
+import RecipeCardTwo from "../../components/RecipeCardTwo";
 import SideBar from "../../components/SideBar";
 import Link from "next/link";
 
@@ -47,7 +47,7 @@ const RecipesList = () => {
         <div className="recipe-list">
           {filteredRecipes.map((recipe) => (
             <Link href={`/recipes/${recipe.id}`}>
-              <RecipeCard key={recipe.id} recipe={recipe} />
+              <RecipeCardTwo key={recipe.id} recipe={recipe} />
             </Link>
           ))}
         </div>
