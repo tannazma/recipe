@@ -24,7 +24,7 @@ const Login = () => {
 
     const nameFromForm = event.currentTarget.username.value;
     const passwordFromForm = event.currentTarget.password.value;
-
+    try {
     const postResponse = await fetch("http://127.0.0.1:3001/login", {
       method: "POST",
       headers: {
@@ -39,6 +39,10 @@ const Login = () => {
     const postData = await postResponse.json();
     console.log(postData);
     console.log("We send the POST");
+    } catch (error) {
+      console.error("An error occurred while logging in:", error);
+      // Handle network error here (e.g., display error message to the user)
+    }
   };
 
   return (
