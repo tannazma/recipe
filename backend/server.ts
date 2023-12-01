@@ -3,7 +3,7 @@ import express from "express";
 import cors from "cors";
 import { json } from "express";
 import { Category } from "../frontend/types";
-import { AuthMiddleware } from "./auth/middleware";
+import { AuthMiddleware, AuthRequest } from "./auth/middleware";
 import { toToken } from "./auth/jwt";
 
 const app = express();
@@ -26,6 +26,19 @@ app.get("/recipes", async (req, res) => {
   res.status(200).send(allRecipes);
 });
 
+app.get("/recipes/me", AuthMiddleware, async (req: AuthRequest, res) => {
+  const userIdThatOwnsTheToken = req.userId;
+  const allRecipes = await prisma.recipe.findMany({
+    where: {
+      userId: userIdThatOwnsTheToken
+    },
+    include: {
+      category: true,
+    },
+  });
+  res.status(200).send(allRecipes);
+});
+
 app.get("/categories", async (req, res) => {
   const allCategories = await prisma.category.findMany({});
   res.status(200).send(allCategories);
@@ -33,7 +46,7 @@ app.get("/categories", async (req, res) => {
 
 app.get("/recipes/:id", async (req, res) => {
   const idAsNumber = Number(req.params.id);
-  const aRecipe = await prisma.recipe.findUnique({
+  const aRecipe = await prisma.recipe.findFirst({
     where: {
       id: idAsNumber,
     },
@@ -70,7 +83,7 @@ app.post("/comments", async (req, res) => {
 
 app.get("/comments/:id", async (req, res) => {
   const idAsNumber = Number(req.params.id);
-  const aComment = await prisma.recipe.findUnique({
+  const aComment = await prisma.recipe.findFirst({
     where: {
       id: idAsNumber,
     },
@@ -155,6 +168,25 @@ app.post("/login", async (req, res) => {
       .status(400)
       .send({ message: "'username' and 'password' are required!" });
   }
+});
+// Delete a recipe
+app.delete("/recipes/:recipeId", async (req, res) => {
+  const { recipeId } = req.params;
+  const recipe = await prisma.recipe.delete({
+    where: { id: Number(recipeId) },
+  });
+  res.json(recipe);
+});
+
+// // Edit a recipe
+app.patch("/recipes/:recipeId", async (req, res) => {
+  const { recipeId } = req.params;
+  const { name, ingredients, instructions } = req.body;
+  const recipe = await prisma.recipe.update({
+    where: { id: parseInt(recipeId) },
+    data: { name, ingredients, instructions },
+  });
+  res.json(recipe);
 });
 
 app.listen(port, () => {
