@@ -1,6 +1,7 @@
 import React, { FormEvent, useEffect, useState } from "react";
 import NavigationBar from "../../components/NavigationBar";
 import Header from "../../components/Header";
+import { useRouter } from "next/router";
 
 const Login = () => {
   useEffect(() => {
@@ -16,6 +17,8 @@ const Login = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
+  const router = useRouter();
+
   const handleForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("hgcghvj");
@@ -25,20 +28,29 @@ const Login = () => {
     const nameFromForm = event.currentTarget.username.value;
     const passwordFromForm = event.currentTarget.password.value;
     try {
-    const postResponse = await fetch("http://127.0.0.1:3001/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: nameFromForm,
-        password: passwordFromForm,
-      }),
-    });
+      const postResponse = await fetch("http://127.0.0.1:3001/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: nameFromForm,
+          password: passwordFromForm,
+        }),
+      });
 
-    const postData = await postResponse.json();
-    console.log(postData);
-    console.log("We send the POST");
+      if (postResponse.ok) {
+        const jsonResponse = await postResponse.json();
+        console.log("Login Successful:", jsonResponse);
+        localStorage.setItem("token", jsonResponse.token);
+        router.push("/dashboard");
+
+        const postData = await postResponse.json();
+        console.log(postData);
+        console.log("We send the POST");
+      } else {
+        console.log("Login failed:", postResponse.status);
+      }
     } catch (error) {
       console.error("An error occurred while logging in:", error);
       // Handle network error here (e.g., display error message to the user)
@@ -57,7 +69,7 @@ const Login = () => {
       />
       <div className="login-container">
         <form onSubmit={handleForm} className="login">
-        <h1>Login</h1>
+          <h1>Login</h1>
           <label>
             Username
             <input
