@@ -132,9 +132,9 @@ app.post("/recipes", async (req, res) => {
   }
 });
 
-app.post("/login", AuthMiddleware, async (req, res) => {
+app.post("/login", async (req, res) => {
   const requestBody = req.body;
-  if ("name" in requestBody && "password" in requestBody) {
+  if ("username" in requestBody && "password" in requestBody) {
     try {
       const userToLogin = await prisma.user.findFirst({
         where: {
@@ -151,7 +151,9 @@ app.post("/login", AuthMiddleware, async (req, res) => {
       res.status(500).send({ message: "Something went wrong" });
     }
   } else {
-    res.status(400).send({ message: "'name' and 'password' are required!" });
+    res
+      .status(400)
+      .send({ message: "'username' and 'password' are required!" });
   }
 });
 
