@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Recipe } from "../types";
 
 interface RecipeProp {
@@ -6,6 +6,20 @@ interface RecipeProp {
 }
 
 const RecipeCardTwo = ({ recipe }: RecipeProp) => {
+  const [comments, setComments] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchComments = async () => {
+      const response = await fetch(
+        `http://localhost:3001/comments?recipeId=${recipe.id}`
+      );
+      const data = await response.json();
+      setComments(data);
+    };
+
+    fetchComments();
+  }, [recipe.id]);
+
   let averageRating = 0;
 
   if (comments && Array.isArray(comments) && comments.length > 0) {
