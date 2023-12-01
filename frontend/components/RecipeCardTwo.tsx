@@ -8,18 +8,11 @@ interface RecipeProp {
 const RecipeCardTwo = ({ recipe }: RecipeProp) => {
   let averageRating = 0;
 
-  // Get the array of comments
-  const comments = recipe.comment;
-
-  // Check if comments is defined and is an array
   if (comments && Array.isArray(comments) && comments.length > 0) {
-    // Calculate the total rating by summing up the rating of each comment
     let totalRating = 0;
     for (let i = 0; i < comments.length; i++) {
       totalRating += comments[i].rating;
     }
-
-    // Calculate the average rating by dividing the total rating by the number of comments
     averageRating = totalRating / comments.length;
   }
 
