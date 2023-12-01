@@ -13,14 +13,17 @@ const Login = () => {
   }, []);
 
   const [submitted, setSubmitted] = useState<boolean>(false);
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const handleForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log("hgcghvj");
 
     setSubmitted(true);
 
-    const nameFromForm = event.currentTarget.recipeName.value;
-    const password = event.currentTarget.instructions.value;
+    const nameFromForm = event.currentTarget.username.value;
+    const passwordFromForm = event.currentTarget.password.value;
 
     const postResponse = await fetch("http://127.0.0.1:3001/login", {
       method: "POST",
@@ -28,8 +31,8 @@ const Login = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: nameFromForm,
-        password: Number(password),
+        username: nameFromForm,
+        password: passwordFromForm,
       }),
     });
 
@@ -48,20 +51,33 @@ const Login = () => {
         height={877.28}
         className="background2"
       />
-      <h1>Login</h1>
-      <form onSubmit={handleForm}>
-        <label>
-          Username
-          <input type="text" id="username"></input>
-        </label>
-        <label>
-          password
-          <input type="password" id="password"></input>
-        </label>
-        <button type="submit" id="submit-btn">
-          Login
-        </button>
-      </form>
+      <div className="login-container">
+        <form onSubmit={handleForm} className="login">
+        <h1>Login</h1>
+          <label>
+            Username
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            ></input>
+          </label>
+          <label>
+            password
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            ></input>
+          </label>
+          <button type="submit" id="submit-btn" className="login-button">
+            Login
+          </button>
+          {submitted && <p>You loggesd in</p>}
+        </form>
+      </div>
     </div>
   );
 };
