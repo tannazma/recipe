@@ -276,6 +276,10 @@ textarea {
   font-size: 2rem;
   color: gold;
 }
+.star-btn3 {
+  font-size: 5rem;
+  color: gold;
+}
 .comment-wrapper {
   display: flex;
   gap: 50px;
@@ -356,7 +360,7 @@ login-container {
   padding-bottom: 40px;
   padding: 10px !important;
 }
-.login-button{
+.login-button {
   justify-self: start;
   padding: 13px 40px;
   border-radius: 20px;
