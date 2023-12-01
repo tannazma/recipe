@@ -22,11 +22,9 @@ form {
   display: grid;
   gap: 40px;
   grid-template-rows: repeat(6, 1fr);
-  top: 595px;
-  left: 465px;
   box-shadow: 0px 7px 24px 0px #0000001a;
   background-color: var(--background);
-  padding: 50px;
+  padding: 30px;
   border-radius: 10px;
 }
 
@@ -69,11 +67,15 @@ form {
 
 .background4,
 .background1,
-.background3,
-.background2 {
+.background3 {
   object-position: center;
   object-fit: cover;
   max-height: max(50vh, 400px);
+  width: 100vw;
+}
+.background2 {
+  object-position: center;
+  object-fit: cover;
   width: 100vw;
 }
 .background5 {
@@ -330,4 +332,34 @@ textarea {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.login {
+  background-color: #ffffff;
+  justify-content: center;
+  /* align-items: center; */
+  align-content: center;
+  width: 32vw;
+  margin: auto;
+  margin-top: 200px;
+}
+login-container {
+  /* margin-top: -300px; */
+  box-shadow: 0px 7px 24px 0px #0000001a;
+  background-color: #ffffff;
+  border-radius: 10px;
+  /* width: 32vw; */
+}
+.login-container {
+  position: absolute;
+  left: 420px;
+  top: 20px;
+  padding-bottom: 40px;
+  padding: 10px !important;
+}
+.login-button{
+  justify-self: start;
+  padding: 13px 40px;
+  border-radius: 20px;
+  background-color: #febd2f;
+  border: none;
 }
