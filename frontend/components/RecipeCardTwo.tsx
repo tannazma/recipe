@@ -5,8 +5,7 @@ interface RecipeProp {
   recipe: Recipe;
 }
 
-const RecipeCard = ({ recipe }: RecipeProp) => {
-  // using reduce
+const RecipeCardTwo = ({ recipe }: RecipeProp) => {
   let averageRating = 0;
 
   // Get the array of comments
@@ -44,4 +43,4 @@ const RecipeCard = ({ recipe }: RecipeProp) => {
     </div>
   );
 };
-export default RecipeCard;
+export default RecipeCardTwo;
