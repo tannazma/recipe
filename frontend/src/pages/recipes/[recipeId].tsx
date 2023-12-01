@@ -5,8 +5,13 @@ import AddComment from "../../../components/AddComment";
 import NavigationBar from "../../../components/NavigationBar";
 import Header from "../../../components/Header";
 import CommentComponent from "../../../components/Comment";
+import { Recipe } from "../../../types";
 
-const RecipeDetailPage = () => {
+interface RecipeProp {
+  recipe: Recipe;
+}
+
+const RecipeDetailPage = ({ recipe }: RecipeProp) => {
   const router = useRouter();
   const idFromUrl = Number(router.query.recipeId);
   console.log(idFromUrl);
@@ -46,6 +51,25 @@ const RecipeDetailPage = () => {
     return <div>recipe not found</div>;
   }
 
+  let averageRating = 0;
+  let comments;
+
+  // Check if recipe is not null before trying to access its comment property
+  if (getRecipe) {
+    comments = getRecipe.comment;
+
+    // Check if comments is defined and is an array
+    if (comments && Array.isArray(comments) && comments.length > 0) {
+      // Calculate the total rating by summing up the rating of each comment
+      let totalRating = 0;
+      for (let i = 0; i < comments.length; i++) {
+        totalRating += comments[i].rating;
+      }
+
+      // Calculate the average rating by dividing the total rating by the number of comments
+      averageRating = totalRating / comments.length;
+    }
+  }
   return (
     <>
       <NavigationBar />
@@ -71,16 +95,13 @@ const RecipeDetailPage = () => {
                   ))}
               </div>
               <div className="recipe-comment">
-                {/* {getRecipe.comment && */}
-                {/* getRecipe.comment.map((comment) => ( */}
-                {/* <p key={comment.id}> */}
-                <span className="star-btn2">★</span>
-                <span className="star-btn2">★</span>
-                <span className="star-btn2">★</span>
-                <span className="star-btn2">★</span>
-                {/* {comment.rating} */}
-                {/* </p> */}
-                {/* ))} */}
+                <div className="rating">
+                  {[1, 2, 3, 4, 5].map((num) => (
+                    <span key={num} className="star-btn3">
+                      {num <= averageRating ? "★" : "☆"}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
             <div className="recipe-details">
@@ -96,7 +117,8 @@ const RecipeDetailPage = () => {
             </div>
             <div className="comment-wrapper">
               <AddComment recipeId={idFromUrl} />
-              {getRecipe.comment &&
+              {getRecipe &&
+                getRecipe.comment &&
                 getRecipe.comment.map((comment) => (
                   <CommentComponent comment={comment} />
                 ))}
